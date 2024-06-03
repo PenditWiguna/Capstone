@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".activity.UserPreferenceActivity">
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/looking_preference"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/nature_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/ic_leaf"
+        android:text="Nature"
+        android:textSize="18sp"
+        android:backgroundTint="@color/green"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/social_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nature_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_social"
+        android:text="Social"
+        android:textSize="18sp"
+        android:backgroundTint="@color/blue"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/culinary_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/social_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_culinary"
+        android:text="Culinary"
+        android:textSize="18sp"
+        android:backgroundTint="@color/brown"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/sea_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/culinary_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_sea"
+        android:text="Sea"
+        android:textSize="18sp"
+        android:backgroundTint="@color/blue"
+        android:layout_marginBottom="20dp" />
+
+    <ImageButton
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/ic_next"
+        android:padding="16dp" />
+
+</RelativeLayout>
