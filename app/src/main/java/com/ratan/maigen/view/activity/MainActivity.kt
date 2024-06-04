@@ -1,4 +1,4 @@
-package com.ratan.maigen.activity
+package com.ratan.maigen.view.activity
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
