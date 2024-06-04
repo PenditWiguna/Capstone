@@ -72,6 +72,7 @@ dependencies {
     implementation (libs.glide)
 
     implementation (libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.paging.common.android)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
