@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MaiGen</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Explore</string>
+    <string name="title_notifications">Account</string>
     <string name="retry">Try Again</string>
     <string name="submit">SUBMIT</string>
     <string name="not_valid_data">DATA YANG ANDA MASUKKAN SALAH</string>
@@ -15,4 +15,10 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="looking_preference">What are you looking for today?</string>
+    <string name="inputlokasi">Inputlokasi\n</string>
+    <string name="popular">Popular</string>
+    <string name="experience">Create your experience\n</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="Recommendation">Recommendation</string>
+    <string name="TopViews">Top views</string>
 </resources>
