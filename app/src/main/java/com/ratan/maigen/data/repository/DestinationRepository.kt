@@ -1,12 +1,19 @@
 package com.ratan.maigen.data.repository
 
+import androidx.lifecycle.LiveData
 import retrofit2.HttpException
 import androidx.lifecycle.liveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.google.gson.Gson
 import com.ratan.maigen.data.api.ApiService
 import com.ratan.maigen.data.model.UserModel
+import com.ratan.maigen.data.paging.DestinationPagingSource
 import com.ratan.maigen.data.preferences.UserPreferences
 import com.ratan.maigen.data.response.ErrorResponse
+import com.ratan.maigen.data.response.ListDestinationItem
 import com.ratan.maigen.data.response.LoginResponse
 import com.ratan.maigen.data.result.ResultState
 import kotlinx.coroutines.flow.Flow
@@ -44,6 +51,17 @@ class DestinationRepository private constructor(private val apiService: ApiServi
             val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
             emit(ResultState.Error(errorResponse.message!!))
         }
+    }
+
+    fun getDestination(token: String): LiveData<PagingData<ListDestinationItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                DestinationPagingSource(apiService,"Bearer $token")
+            }
+        ).liveData
     }
 
     fun getSession(): Flow<UserModel> {

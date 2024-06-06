@@ -1,4 +1,4 @@
-package com.ratan.maigen.view.ui.notifications
+package com.ratan.maigen.ui.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater
