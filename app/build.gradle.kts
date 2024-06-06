@@ -41,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat.v170)
     implementation(libs.material)
@@ -73,6 +74,8 @@ dependencies {
 
     implementation (libs.androidx.paging.runtime.ktx)
     implementation(libs.androidx.paging.common.android)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

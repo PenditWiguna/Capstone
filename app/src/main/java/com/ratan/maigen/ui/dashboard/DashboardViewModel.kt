@@ -1,4 +1,4 @@
-package com.ratan.maigen.view.ui.dashboard
+package com.ratan.maigen.ui.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
