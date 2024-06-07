@@ -63,11 +63,11 @@
         tools:layout_editor_absoluteY="154dp"
         tools:src="@tools:sample/avatars" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="241dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="434dp"
-        tools:ignore="MissingConstraints" />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="241dp"-->
+<!--        tools:layout_editor_absoluteX="1dp"-->
+<!--        tools:layout_editor_absoluteY="434dp"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

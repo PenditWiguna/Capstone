@@ -37,13 +37,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="32dp"
         android:text="@string/title_welcome_page"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:textStyle="bold"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,30 +51,24 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="0dp"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/purple_700"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/oren"
         android:text="@string/login"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <Button
         android:id="@+id/signupButton"
-        android:layout_width="0dp"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="-47.5dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/purple_700"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="112dp"
+        android:backgroundTint="@color/oren"
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -84,11 +78,11 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/guidelineVertical"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintGuide_percent="0.5" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,4 +21,5 @@
     <string name="lokasi">Lokasi</string>
     <string name="Recommendation">Recommendation</string>
     <string name="TopViews">Top views</string>
+    <string name="logout">logout</string>
 </resources>
