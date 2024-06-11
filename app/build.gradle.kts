@@ -36,7 +36,9 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        mlModelBinding = true
     }
+
 }
 
 dependencies {
@@ -76,6 +78,7 @@ dependencies {
     implementation(libs.androidx.paging.common.android)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.tensorflow.lite.metadata)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -84,4 +87,7 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
+
+    implementation (libs.tensorflow.lite)
+    implementation (libs.tensorflow.lite.support)
 }

@@ -8,69 +8,118 @@
     android:padding="16dp"
     tools:context=".view.activity.SurveyPreferenceActivity">
 
+    <LinearLayout
+        android:id="@+id/surveyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/pilih_kategori_minat_wisata"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp" />
+
+        <CheckBox
+            android:id="@+id/checkBoxNature"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nature" />
+
+        <CheckBox
+            android:id="@+id/checkBoxSocial"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/social" />
+
+        <CheckBox
+            android:id="@+id/checkBoxCulinary"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/culinary" />
+
+        <CheckBox
+            android:id="@+id/checkBoxSea"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sea" />
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/dapatkan_rekomendasi" />
+    </LinearLayout>
+
+    <!-- Hasil Rekomendasi -->
     <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewResult"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="@string/looking_preference"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/nature_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:drawableStart="@drawable/ic_leaf"
-        android:text="Nature"
+        android:layout_marginTop="32dp"
         android:textSize="18sp"
-        android:backgroundTint="@color/green"
-        android:layout_marginBottom="10dp" />
+        android:visibility="gone" />
 
-    <Button
-        android:id="@+id/social_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nature_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/ic_social"
-        android:text="Social"
-        android:textSize="18sp"
-        android:backgroundTint="@color/blue"
-        android:layout_marginBottom="10dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/title_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:text="@string/looking_preference"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="sans-serif"-->
+<!--        android:textAlignment="center" />-->
 
-    <Button
-        android:id="@+id/culinary_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/social_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/ic_culinary"
-        android:text="Culinary"
-        android:textSize="18sp"
-        android:backgroundTint="@color/brown"
-        android:layout_marginBottom="10dp" />
+<!--    <Button-->
+<!--        android:id="@+id/nature_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/title_text"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:drawableStart="@drawable/ic_leaf"-->
+<!--        android:text="Nature"-->
+<!--        android:textSize="18sp"-->
+<!--        android:backgroundTint="@color/green"-->
+<!--        android:layout_marginBottom="10dp" />-->
 
-    <Button
-        android:id="@+id/sea_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/culinary_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/ic_sea"
-        android:text="Sea"
-        android:textSize="18sp"
-        android:backgroundTint="@color/blue"
-        android:layout_marginBottom="20dp" />
+<!--    <Button-->
+<!--        android:id="@+id/social_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/nature_button"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:drawableStart="@drawable/ic_social"-->
+<!--        android:text="Social"-->
+<!--        android:textSize="18sp"-->
+<!--        android:backgroundTint="@color/blue"-->
+<!--        android:layout_marginBottom="10dp" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/culinary_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/social_button"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:drawableStart="@drawable/ic_culinary"-->
+<!--        android:text="Culinary"-->
+<!--        android:textSize="18sp"-->
+<!--        android:backgroundTint="@color/brown"-->
+<!--        android:layout_marginBottom="10dp" />-->
+
 
     <ImageButton
         android:id="@+id/next_button"

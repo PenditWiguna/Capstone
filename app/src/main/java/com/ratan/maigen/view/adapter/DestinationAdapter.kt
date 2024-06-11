@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ratan.maigen.data.response.ListDestinationItem
 import com.ratan.maigen.databinding.ItemDestinationBinding
 
@@ -24,10 +25,13 @@ class DestinationAdapter : PagingDataAdapter<ListDestinationItem, DestinationAda
 
     class DestinationViewHolder(private val binding: ItemDestinationBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(destination: ListDestinationItem) {
+            binding.tvNamedestination.text = destination.name
+            binding.tvDesc.text = destination.description
+            Glide.with(binding.imgDestination.context)
+                .load(destination)
             // Bind the data here
         }
     }
-
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListDestinationItem>() {
             override fun areItemsTheSame(oldItem: ListDestinationItem, newItem: ListDestinationItem): Boolean {
