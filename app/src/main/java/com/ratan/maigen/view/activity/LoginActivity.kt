@@ -79,9 +79,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         AlertDialog.Builder(this).apply {
-            setTitle("Yeah!")
-            setMessage("Anda berhasil login. Sudah tidak sabar untuk membaca dan menulis cerita ya?")
-            setPositiveButton("Lanjut") { _, _ ->
+            setTitle("Yeay!")
+            setMessage("Let's see the recommended travel destinations for you!")
+            setPositiveButton("Next") { _, _ ->
                 val intent = Intent(context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
@@ -134,7 +134,7 @@ class LoginActivity : AppCompatActivity() {
                     is ResultState.Success -> {
                         val token = result.data.toString()
                         viewModel.saveSession(UserModel(email, password, token))
-                        showToast("Login berhasil")
+                        showToast("Login successful")
                         showLoading(false)
                         setupAction()
                     }

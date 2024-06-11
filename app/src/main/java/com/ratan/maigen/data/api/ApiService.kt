@@ -12,15 +12,15 @@ import retrofit2.http.Query
 
 interface ApiService {
     @FormUrlEncoded
-    @POST("register")
+    @POST("/auth/signup")
     suspend fun register(
-        @Field("name") name: String,
+        @Field("username") username: String,
         @Field("email") email: String,
         @Field("password") password: String
     ): RegisterResponse
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("/auth/login")
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String

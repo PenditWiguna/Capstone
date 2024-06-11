@@ -84,8 +84,8 @@ class RegisterActivity : AppCompatActivity() {
     private fun setupAction() {
         AlertDialog.Builder(this).apply {
             setTitle("Regist Sucsessful!")
-            setMessage("Akun berhasil dibuat. Silahkan login terlebih dahulu.")
-            setPositiveButton("Lanjut") { _, _ ->
+            setMessage("Your account has been successfully created. Let's login first!")
+            setPositiveButton("Next") { _, _ ->
                 val intent = Intent(context, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
@@ -134,11 +134,11 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun register() {
-        val name = binding.nameEditText.text.toString()
+        val username = binding.nameEditText.text.toString()
         val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
 
-        viewModel.register(name, email, password).observe(this) { result ->
+        viewModel.register(username, email, password).observe(this) { result ->
             if (result != null) {
                 when (result) {
                     is ResultState.Loading -> {

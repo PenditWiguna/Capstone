@@ -20,10 +20,10 @@ import kotlinx.coroutines.flow.Flow
 
 class DestinationRepository private constructor(private val apiService: ApiService, private val preferences: UserPreferences) {
 
-    fun register(name: String, email: String, password: String) = liveData {
+    fun register(username: String, email: String, password: String) = liveData {
         emit(ResultState.Loading)
         try {
-            val successResponse = apiService.register(name, email, password)
+            val successResponse = apiService.register(username, email, password)
             val message = successResponse.message
             emit(ResultState.Success(message))
         } catch (e: HttpException) {
