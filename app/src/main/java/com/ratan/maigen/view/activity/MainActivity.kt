@@ -64,12 +64,6 @@ class MainActivity : AppCompatActivity() {
             displayResult(prediction)
         }
 
-
-
-
-
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

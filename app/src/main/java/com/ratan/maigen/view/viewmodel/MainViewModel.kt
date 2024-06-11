@@ -15,8 +15,8 @@ class MainViewModel(private val repository: DestinationRepository) : ViewModel()
 
     // val about = repository.about
 
-    fun register(name: String, email: String, password: String) =
-        repository.register(name, email, password)
+    fun register(username: String, email: String, password: String) =
+        repository.register(username, email, password)
 
     fun login(email: String, password: String) = repository.login(email, password)
 
