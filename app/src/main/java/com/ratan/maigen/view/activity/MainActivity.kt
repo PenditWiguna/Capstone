@@ -22,6 +22,7 @@ import com.ratan.maigen.view.viewmodel.ViewModelFactory
 class MainActivity : AppCompatActivity() {
 
     private lateinit var modelHelper: TFLiteModelHelper
+    private lateinit var destinationAdapter: DestinationAdapter
 
     private val viewModel: MainViewModel by viewModels { ViewModelFactory.getInstance(this) }
     private lateinit var binding: ActivityMainBinding
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         modelHelper = TFLiteModelHelper(this)
 
@@ -54,6 +56,10 @@ class MainActivity : AppCompatActivity() {
             }
             getData(token)
         }
+
+//        val predictions = intent.getStringArrayListExtra("predictions")?: arrayListOf()
+//        destinationAdapter = DestinationAdapter(predictions)
+
     }
 
     private fun getData(token: String) {
@@ -79,4 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+
 }

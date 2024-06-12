@@ -32,4 +32,6 @@
     <string name="pantai">Pantai</string>
     <string name="rekreasi">Rekreasi</string>
     <string name="religius">Religius</string>
+    <string name="changeusername">Change Username?</string>
+    <string name="changepassword">Change Password</string>
 </resources>
