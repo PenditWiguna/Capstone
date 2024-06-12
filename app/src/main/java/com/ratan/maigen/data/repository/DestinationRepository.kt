@@ -2,6 +2,7 @@ package com.ratan.maigen.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import retrofit2.HttpException
 import androidx.lifecycle.liveData
 import androidx.paging.Pager
