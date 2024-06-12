@@ -79,10 +79,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         AlertDialog.Builder(this).apply {
-            setTitle("Yeay!")
-            setMessage("Let's see the recommended travel destinations for you!")
-            setPositiveButton("Next") { _, _ ->
-                val intent = Intent(context, MainActivity::class.java)
+            setTitle("Login Berhasil!")
+            setMessage("Lihat rekomendasi untuk Anda, yuk!")
+            setPositiveButton("Yuk, lanjut!") { _, _ ->
+                val intent = Intent(context, SurveyPreferenceActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()
@@ -134,7 +134,7 @@ class LoginActivity : AppCompatActivity() {
                     is ResultState.Success -> {
                         val token = result.data.toString()
                         viewModel.saveSession(UserModel(email, password, token))
-                        showToast("Login successful")
+                        showToast("Login berhasil")
                         showLoading(false)
                         setupAction()
                     }

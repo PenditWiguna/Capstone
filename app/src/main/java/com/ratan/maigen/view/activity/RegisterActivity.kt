@@ -83,9 +83,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setupAction() {
         AlertDialog.Builder(this).apply {
-            setTitle("Regist Sucsessful!")
-            setMessage("Your account has been successfully created. Let's login first!")
-            setPositiveButton("Next") { _, _ ->
+            setTitle("Registrasi Berhasil!")
+            setMessage("Akun Anda telah berhasil dibuat. Login dulu, yuk!")
+            setPositiveButton("Yuk, lanjut!") { _, _ ->
                 val intent = Intent(context, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
