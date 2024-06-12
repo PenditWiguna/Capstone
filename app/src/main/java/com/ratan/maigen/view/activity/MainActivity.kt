@@ -26,10 +26,14 @@ import com.ratan.maigen.view.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var checkBoxNature: CheckBox
-    private lateinit var checkBoxCulinary: CheckBox
-    private lateinit var checkBoxSocial: CheckBox
-    private lateinit var checkBoxSea: CheckBox
+    private lateinit var checkBoxAgrowisata: CheckBox
+    private lateinit var checkBoxAlam: CheckBox
+    private lateinit var checkBoxBelanja: CheckBox
+    private lateinit var checkBoxBudaya: CheckBox
+    private lateinit var checkBoxCagarAlam: CheckBox
+    private lateinit var checkBoxPantai: CheckBox
+    private lateinit var checkBoxRekreasi: CheckBox
+    private lateinit var checkBoxReligius: CheckBox
     private lateinit var buttonSubmit: Button
     private lateinit var textViewResult: TextView
 
@@ -44,10 +48,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        checkBoxNature = findViewById(R.id.checkBoxNature)
-        checkBoxCulinary = findViewById(R.id.checkBoxCulinary)
-        checkBoxSocial = findViewById(R.id.checkBoxSocial)
-        checkBoxSea = findViewById(R.id.checkBoxSea)
+        checkBoxAgrowisata = findViewById(R.id.checkBoxAgrowisata)
+        checkBoxAlam = findViewById(R.id.checkBoxAlam)
+        checkBoxBelanja = findViewById(R.id.checkBoxBelanja)
+        checkBoxBudaya = findViewById(R.id.checkBoxBudaya)
+
+        checkBoxCagarAlam = findViewById(R.id.checkCagarAlam)
+        checkBoxPantai = findViewById(R.id.checkBoxPantai)
+        checkBoxRekreasi = findViewById(R.id.checkBoxRekreasi)
+        checkBoxReligius = findViewById(R.id.checkBoxReligius)
         buttonSubmit = findViewById(R.id.buttonSubmit)
         textViewResult = findViewById(R.id.textViewResult)
 
@@ -55,10 +64,14 @@ class MainActivity : AppCompatActivity() {
 
         buttonSubmit.setOnClickListener {
             val input = FloatArray (4)
-            input[0] = if (checkBoxNature.isChecked) 1.0f else 0.0f
-            input[1] = if (checkBoxCulinary.isChecked) 1.0f else 0.0f
-            input[2] = if (checkBoxSocial.isChecked) 1.0f else 0.0f
-            input[3] = if (checkBoxSea.isChecked) 1.0f else 0.0f
+            input[0] = if (checkBoxAgrowisata.isChecked) 1.0f else 0.0f
+            input[1] = if (checkBoxAlam.isChecked) 1.0f else 0.0f
+            input[2] = if (checkBoxBelanja.isChecked) 1.0f else 0.0f
+            input[3] = if (checkBoxBudaya.isChecked) 1.0f else 0.0f
+            input[4] = if (checkBoxCagarAlam.isChecked) 1.0f else 0.0f
+            input[5] = if (checkBoxPantai.isChecked) 1.0f else 0.0f
+            input[6] = if (checkBoxRekreasi.isChecked) 1.0f else 0.0f
+            input[6] = if (checkBoxReligius.isChecked) 1.0f else 0.0f
 
             val prediction = modelHelper.predict(input)
             displayResult(prediction)

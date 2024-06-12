@@ -24,32 +24,60 @@
             android:layout_marginBottom="16dp" />
 
         <CheckBox
-            android:id="@+id/checkBoxNature"
+            android:id="@+id/checkBoxAgrowisata"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nature" />
+            android:text="@string/Agrowisata" />
 
         <CheckBox
-            android:id="@+id/checkBoxSocial"
+            android:id="@+id/checkBoxAlam"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/social" />
+            android:text="@string/Alam" />
 
         <CheckBox
-            android:id="@+id/checkBoxCulinary"
+            android:id="@+id/checkBoxBelanja"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/culinary" />
+            android:text="@string/belanja" />
 
         <CheckBox
-            android:id="@+id/checkBoxSea"
+            android:id="@+id/checkBoxBudaya"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sea" />
+            android:text="@string/budaya" />
+
+        <CheckBox
+            android:id="@+id/checkCagarAlam"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cagaralam" />
+
+        <CheckBox
+            android:id="@+id/checkBoxPantai"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pantai" />
+
+        <CheckBox
+            android:id="@+id/checkBoxRekreasi"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rekreasi" />
+
+        <CheckBox
+            android:id="@+id/checkBoxReligius"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/religius" />
 
         <Button
             android:id="@+id/buttonSubmit"
