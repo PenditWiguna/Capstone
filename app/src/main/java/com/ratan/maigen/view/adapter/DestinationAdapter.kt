@@ -22,7 +22,7 @@ class DestinationAdapter : PagingDataAdapter<ListDestinationItem, DestinationAda
             holder.bind(destination)
         }
     }
-
+    
     class DestinationViewHolder(private val binding: ItemDestinationBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(destination: ListDestinationItem) {
             binding.tvNamedestination.text = destination.name
