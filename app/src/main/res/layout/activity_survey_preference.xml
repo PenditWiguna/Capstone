@@ -28,14 +28,14 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Agrowisata" />
+            android:text="@string/agrowisata" />
 
         <CheckBox
             android:id="@+id/checkBoxAlam"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Alam" />
+            android:text="@string/alam" />
 
         <CheckBox
             android:id="@+id/checkBoxBelanja"
@@ -52,11 +52,11 @@
             android:text="@string/budaya" />
 
         <CheckBox
-            android:id="@+id/checkCagarAlam"
+            android:id="@+id/checkBoxCagarAlam"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cagaralam" />
+            android:text="@string/cagarAlam" />
 
         <CheckBox
             android:id="@+id/checkBoxPantai"

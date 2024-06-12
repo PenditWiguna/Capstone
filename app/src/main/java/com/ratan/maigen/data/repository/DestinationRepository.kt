@@ -1,5 +1,6 @@
 package com.ratan.maigen.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import retrofit2.HttpException
 import androidx.lifecycle.liveData
@@ -28,13 +29,14 @@ class DestinationRepository private constructor(private val apiService: ApiServi
             emit(ResultState.Success(message))
         } catch (e: HttpException) {
             val errorMessage: String
+            val errorBody = e.response()?.errorBody()?.string()
+            Log.e("Register Error", errorBody ?: "Unknown error")
             if (e.code() == 400) {
-                errorMessage = "Email is already taken"
+                errorMessage = "Email sudah digunakan"
                 emit(ResultState.Error(errorMessage))
             } else {
-                val jsonInString = e.response()?.errorBody()?.string()
-                val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-                errorMessage = errorBody.message.toString()
+                val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+                errorMessage = errorResponse.message.toString()
                 emit(ResultState.Error(errorMessage))
             }
         }
