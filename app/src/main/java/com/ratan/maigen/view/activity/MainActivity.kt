@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getData(token: String) {
-        val adapter = DestinationAdapter()
+        val adapter = DestinationAdapter(this)
         binding.rvDestination.adapter = adapter.withLoadStateFooter(
             footer = LoadingStateAdapter {
                 adapter.retry()
