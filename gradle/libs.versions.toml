@@ -30,6 +30,8 @@ navigationUiKtx = "2.7.7"
 activity = "1.9.0"
 pagingRuntimeKtx = "3.3.0"
 playServicesMaps = "18.2.0"
+playServicesTfliteGpu = "16.2.0"
+playServicesTfliteJava = "16.1.0"
 retrofit = "2.9.0"
 pagingCommonAndroid = "3.3.0"
 navigationFragment = "2.7.7"
@@ -75,6 +77,8 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
 mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockitoCore" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
+play-services-tflite-gpu = { module = "com.google.android.gms:play-services-tflite-gpu", version.ref = "playServicesTfliteGpu" }
+play-services-tflite-java = { module = "com.google.android.gms:play-services-tflite-java", version.ref = "playServicesTfliteJava" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-paging-common-android = { group = "androidx.paging", name = "paging-common-android", version.ref = "pagingCommonAndroid" }
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }

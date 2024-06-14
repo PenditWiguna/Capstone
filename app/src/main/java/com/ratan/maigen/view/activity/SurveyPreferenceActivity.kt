@@ -4,9 +4,11 @@ import TFLiteModelHelper
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,7 +31,7 @@ class SurveyPreferenceActivity : AppCompatActivity() {
 
     private lateinit var modelHelper: TFLiteModelHelper
 
-    @SuppressLint("MissingInflatedId")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey_preference)
@@ -45,7 +47,6 @@ class SurveyPreferenceActivity : AppCompatActivity() {
         buttonSubmit = findViewById(R.id.buttonSubmit)
         textViewResult = findViewById(R.id.textViewResult)
 
-        modelHelper = TFLiteModelHelper(this)
 
         buttonSubmit.setOnClickListener {
             val input = FloatArray(4)
@@ -57,20 +58,24 @@ class SurveyPreferenceActivity : AppCompatActivity() {
             input[5] = if (checkBoxPantai.isChecked) 1.0f else 0.0f
             input[6] = if (checkBoxRekreasi.isChecked) 1.0f else 0.0f
             input[7] = if (checkBoxReligius.isChecked) 1.0f else 0.0f
-
-            val prediction = modelHelper.predict(input)
-            displayResult(prediction)
         }
 
         val button: Button = findViewById(R.id.buttonSubmit)
 
         button.setOnClickListener{
+            val input = FloatArray(65)
+
+            val modelHelper = TFLiteModelHelper(this, onError = { error ->
+                Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+            })
+            val prediction = modelHelper.predict(input)
+
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("prediction",prediction)
             startActivity(intent)
+
+            modelHelper.close()
         }
     }
 
-    fun displayResult(prediction: FloatArray) {
-        // Implementasi displayResult
-    }
 }

@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.ratan.maigen"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -92,6 +92,10 @@ dependencies {
 
     implementation (libs.tensorflow.lite)
     implementation (libs.tensorflow.lite.support)
+
+
+    implementation(libs.play.services.tflite.java)
+    implementation(libs.play.services.tflite.gpu)
 
 
 

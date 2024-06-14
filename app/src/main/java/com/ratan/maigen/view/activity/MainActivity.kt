@@ -12,6 +12,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ratan.maigen.R
 import com.ratan.maigen.databinding.ActivityMainBinding
 import com.ratan.maigen.view.adapter.DestinationAdapter
@@ -28,13 +30,22 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
+
+        super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val prediction = intent.getFloatArrayExtra("prediction")
 
-        modelHelper = TFLiteModelHelper(this)
+        val recommendations = getRecommendationsFromPrediction(prediction)
+
+        val recyclerView: RecyclerView = findViewById(R.id.rv_destination)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = DestinationAdapter(recommendations)
+
+
+
 
         val navView: BottomNavigationView = binding.navView
 
@@ -85,7 +96,6 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 
 
 }

@@ -2,6 +2,7 @@ package com.ratan.maigen.view.activity
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -62,6 +63,15 @@ class LoginActivity : AppCompatActivity() {
 
         setupView()
         playAnimation()
+
+        binding.loginButton.setOnClickListener {
+            val name = binding.emailTextView.text.toString()
+
+            val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("name", name)
+            editor.apply()
+        }
     }
 
     private fun setupView() {
