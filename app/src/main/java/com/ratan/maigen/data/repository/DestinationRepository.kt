@@ -2,6 +2,7 @@ package com.ratan.maigen.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import retrofit2.HttpException
 import androidx.lifecycle.liveData
 import androidx.paging.Pager
@@ -77,6 +78,14 @@ class DestinationRepository private constructor(private val apiService: ApiServi
     suspend fun logout() {
         preferences.logout()
         instance = null
+    }
+
+    fun getSurveyPreference(): LiveData<Boolean> {
+        return preferences.getSurveyPreference().asLiveData()
+    }
+
+    suspend fun saveSurveyPreference(preference: Boolean) {
+        preferences.saveSurveyPreference(preference)
     }
 
     companion object {

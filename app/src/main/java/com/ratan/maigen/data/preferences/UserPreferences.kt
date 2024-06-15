@@ -15,6 +15,8 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 
 class UserPreferences private constructor(private val dataStore: DataStore<Preferences>) {
 
+    private val SURVEY_PREFERENCE_KEY = booleanPreferencesKey("survey_preference")
+
     suspend fun saveSession(user: UserModel) {
         dataStore.edit { preferences ->
             preferences[EMAIL_KEY] = user.email
@@ -41,6 +43,19 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         }
         INSTANCE = null
     }
+
+    fun getSurveyPreference(): Flow<Boolean> {
+        return dataStore.data.map { preferences ->
+            preferences[SURVEY_PREFERENCE_KEY] ?: false
+        }
+    }
+
+    suspend fun saveSurveyPreference(completed: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[SURVEY_PREFERENCE_KEY] = completed
+        }
+    }
+
     companion object {
         @Volatile
         private var INSTANCE: UserPreferences? = null
