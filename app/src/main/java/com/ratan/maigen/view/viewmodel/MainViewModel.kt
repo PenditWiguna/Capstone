@@ -35,4 +35,14 @@ class MainViewModel(private val repository: DestinationRepository) : ViewModel()
             repository.logout()
         }
     }
+
+    fun getSurveyPreference(): LiveData<Boolean> {
+        return repository.getSurveyPreference()
+    }
+
+    fun saveSurveyPreference(preference: Boolean) {
+        viewModelScope.launch {
+            repository.saveSurveyPreference(preference)
+        }
+    }
 }

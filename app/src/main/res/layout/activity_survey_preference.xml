@@ -23,67 +23,131 @@
             android:textSize="18sp"
             android:layout_marginBottom="16dp" />
 
-        <CheckBox
-            android:id="@+id/checkBoxAgrowisata"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/agrowisata" />
+            android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/checkBoxAlam"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/alam" />
+            <RadioButton
+                android:id="@+id/radioButtonAgrowisata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/agrowisata" />
 
-        <CheckBox
-            android:id="@+id/checkBoxBelanja"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/belanja" />
+            <RadioButton
+                android:id="@+id/radioButtonAlam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/alam" />
 
-        <CheckBox
-            android:id="@+id/checkBoxBudaya"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/budaya" />
+            <RadioButton
+                android:id="@+id/radioButtonBelanja"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/belanja" />
 
-        <CheckBox
-            android:id="@+id/checkBoxCagarAlam"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cagarAlam" />
+            <RadioButton
+                android:id="@+id/radioButtonBudaya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/budaya" />
 
-        <CheckBox
-            android:id="@+id/checkBoxPantai"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pantai" />
+            <RadioButton
+                android:id="@+id/radioButtonCagarAlam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/cagarAlam" />
 
-        <CheckBox
-            android:id="@+id/checkBoxRekreasi"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rekreasi" />
+            <RadioButton
+                android:id="@+id/radioButtonPantai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/pantai" />
 
-        <CheckBox
-            android:id="@+id/checkBoxReligius"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/religius" />
+            <RadioButton
+                android:id="@+id/radioButtonRekreasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/rekreasi" />
+
+            <RadioButton
+                android:id="@+id/radioButtonReligius"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/religius" />
+        </RadioGroup>
+
+        <!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxAgrowisata"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/agrowisata" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxAlam"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/alam" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxBelanja"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/belanja" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxBudaya"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/budaya" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxCagarAlam"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/cagarAlam" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxPantai"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/pantai" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxRekreasi"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/rekreasi" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkBoxReligius"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/religius" />-->
 
         <Button
             android:id="@+id/buttonSubmit"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:text="@string/dapatkan_rekomendasi" />
     </LinearLayout>
