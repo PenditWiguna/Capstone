@@ -1,4 +1,4 @@
-package com.ratan.maigen.ui.notifications
+package com.ratan.maigen.ui.profile
 
 import android.content.Context
 import android.content.Intent
@@ -6,15 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.ratan.maigen.databinding.FragmentNotificationsBinding
-import com.ratan.maigen.view.activity.LoginActivity
+import com.ratan.maigen.databinding.FragmentProfileBinding
 
-class NotificationsFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,10 +23,10 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        val profileViewModel =
+            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root
@@ -54,7 +52,7 @@ class NotificationsFragment : Fragment() {
     }
 
     private fun redirectToLogin() {
-        val intent = Intent(activity, NotificationsFragment::class.java)
+        val intent = Intent(activity, ProfileFragment::class.java)
         startActivity(intent)
         activity?.finish()
     }

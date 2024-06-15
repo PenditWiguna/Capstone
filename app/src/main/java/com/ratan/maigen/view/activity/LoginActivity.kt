@@ -12,13 +12,9 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.ratan.maigen.R
 import com.ratan.maigen.customview.EmailEditText
 import com.ratan.maigen.customview.MyButton
 import com.ratan.maigen.customview.PasswordEditText

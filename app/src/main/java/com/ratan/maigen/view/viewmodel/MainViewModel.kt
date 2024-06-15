@@ -13,8 +13,6 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: DestinationRepository) : ViewModel() {
 
-    // val about = repository.about
-
     fun register(username: String, email: String, password: String) =
         repository.register(username, email, password)
 
