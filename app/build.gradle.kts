@@ -90,13 +90,10 @@ dependencies {
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
 
-    implementation (libs.tensorflow.lite)
-    implementation (libs.tensorflow.lite.support)
-
+    implementation(libs.tensorflow.lite.v2120)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.api)
 
     implementation(libs.play.services.tflite.java)
     implementation(libs.play.services.tflite.gpu)
-
-
-
 }
