@@ -4,8 +4,11 @@ import android.util.Log
 import com.google.android.gms.tflite.client.TfLiteInitializationOptions
 import com.google.android.gms.tflite.gpu.support.TfLiteGpu
 import com.google.android.gms.tflite.java.TfLite
+import com.ratan.maigen.ml.RecommenderModel
+import org.tensorflow.lite.DataType
 import org.tensorflow.lite.InterpreterApi
 import org.tensorflow.lite.gpu.GpuDelegateFactory
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.FileInputStream
 import java.io.IOException
 import java.nio.ByteBuffer
@@ -18,6 +21,7 @@ class TFLiteModelHelper(
     private val model: String = "recommender_model.tflite",
     private val onError: (String) -> Unit,
 ) {
+
     private var isGPUSupported: Boolean = false
     private var interpreter: InterpreterApi? = null
 
@@ -93,3 +97,29 @@ class TFLiteModelHelper(
         private const val TAG = "recommender_model.tflite"
     }
 }
+
+//class TFliteModelHelper (private val context: Context){
+//
+//    private val model: RecommenderModel = RecommenderModel.newInstance(context)
+//    fun predict (input0 : Float,input1: FloatArray) : FloatArray {
+//        // input for preferences
+//        val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 1), DataType.FLOAT32)
+//        val  byteBuffer0 = ByteBuffer.allocateDirect(4 * 1).order(ByteOrder.nativeOrder())
+//        byteBuffer0.putFloat(input0)
+//        inputFeature0.loadBuffer(byteBuffer0)
+//
+//        val inputFeature1 = TensorBuffer.createFixedSize(intArrayOf(1, 65), DataType.FLOAT32)
+//        val byteBuffer1 = ByteBuffer.allocateDirect(4 * 65).order(ByteOrder.nativeOrder())
+//        for (value in input1) {
+//            byteBuffer1.putFloat(value)
+//        }
+//        inputFeature1.loadBuffer(byteBuffer1)
+//
+//        val outputs = model.process(inputFeature0, inputFeature1)
+//        val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+//
+//        model.close()
+//
+//        return outputFeature0.floatArray
+//    }
+//}
