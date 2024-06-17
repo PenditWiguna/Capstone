@@ -47,15 +47,14 @@ class ExploreFragment : Fragment() {
     }
 
     private fun setupSearchView() {
-        binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener,
-            SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
                     lifecycleScope.launch {
-                      //  exploreViewModel.searchDestination(it)
+                      exploreViewModel.searchDestination(it)
                     }
                 }
-                return false
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -63,7 +62,7 @@ class ExploreFragment : Fragment() {
                     exploreViewModel.searchDestination(it)
                 }
                 // Optional: Implement if you want to filter while typing
-                return false
+                return true
             }
         })
     }
