@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 data class ExploreResponse(
     @SerializedName("results")
-    val results: List<ExploreResult>? = null
+    val results: List<ListExploreResult>
 )
 
-data class ExploreResult(
+data class ListExploreResult(
     @SerializedName("Place_Id")
     val Place_Id: String? = null,
 

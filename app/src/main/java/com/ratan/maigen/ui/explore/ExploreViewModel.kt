@@ -5,18 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ratan.maigen.data.api.ApiConfig
-import com.ratan.maigen.data.response.ExploreResult
-import kotlinx.coroutines.Dispatchers
+import com.ratan.maigen.data.response.ListExploreResult
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ExploreViewModel : ViewModel() {
 
-    private val _exploreData = MutableLiveData<List<ExploreResult>>()
-    val exploreData: LiveData<List<ExploreResult>> = _exploreData
+    private val _exploreData = MutableLiveData<List<ListExploreResult>>()
+    val exploreData: LiveData<List<ListExploreResult>> = _exploreData
 
-    private val _filteredData = MutableLiveData<List<ExploreResult>>()
-    val filteredData: LiveData<List<ExploreResult>> get() = _filteredData
+    private val _filteredData = MutableLiveData<List<ListExploreResult>>()
+    val filteredData: LiveData<List<ListExploreResult>> get() = _filteredData
 
     init {
         loadData()
@@ -28,7 +26,7 @@ class ExploreViewModel : ViewModel() {
     private fun loadData() {
         // Simulate loading data from an API or database
         viewModelScope.launch {
-            val data = listOf<ExploreResult>() // Replace with actual data loading
+            val data = listOf<ListExploreResult>() // Replace with actual data loading
             _exploreData.value = data
             _filteredData.value = data
         }
