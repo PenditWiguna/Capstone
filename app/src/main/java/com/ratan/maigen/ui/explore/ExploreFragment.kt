@@ -59,6 +59,9 @@ class ExploreFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    exploreViewModel.searchDestination(it)
+                }
                 // Optional: Implement if you want to filter while typing
                 return false
             }

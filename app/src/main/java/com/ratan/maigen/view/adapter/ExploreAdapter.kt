@@ -10,6 +10,7 @@ import com.ratan.maigen.databinding.ItemDestinationBinding
 class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ExploreViewHolder>() {
 
     private var exploreList = listOf<ExploreResult>()
+    private var filteredExplores: List<ExploreResult> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreViewHolder {
         val binding = ItemDestinationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -27,8 +28,23 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ExploreViewHolder>() 
 
     fun submitList(list: List<ExploreResult>) {
         exploreList = list
+        filteredExplores = list
         notifyDataSetChanged()
     }
+
+    fun filter(query: String) {
+        filteredExplores = if (query.isEmpty()) {
+            exploreList
+        } else {
+            exploreList.filter {
+                (it.Place_Name?.contains(query, ignoreCase = true) ?: false) ||
+                        (it.Description?.contains(query, ignoreCase = true) ?: false) ||
+                        (it.City?.contains(query, ignoreCase = true) ?: false)
+            }
+        }
+        notifyDataSetChanged()
+    }
+
 
     class ExploreViewHolder(private val binding: ItemDestinationBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(exploreItem: ExploreResult) {

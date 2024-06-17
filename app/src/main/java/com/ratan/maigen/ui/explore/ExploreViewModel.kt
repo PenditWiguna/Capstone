@@ -15,7 +15,35 @@ class ExploreViewModel : ViewModel() {
     private val _exploreData = MutableLiveData<List<ExploreResult>>()
     val exploreData: LiveData<List<ExploreResult>> = _exploreData
 
+    private val _filteredData = MutableLiveData<List<ExploreResult>>()
+    val filteredData: LiveData<List<ExploreResult>> get() = _filteredData
+
+    init {
+        loadData()
+    }
+
     private val apiService = ApiConfig.getApiService()
+
+
+    private fun loadData() {
+        // Simulate loading data from an API or database
+        viewModelScope.launch {
+            val data = listOf<ExploreResult>() // Replace with actual data loading
+            _exploreData.value = data
+            _filteredData.value = data
+        }
+    }
+
+    fun searchDestination(query: String) {
+        val filteredList = _exploreData.value?.filter {
+            (it.Place_Name?.contains(query, ignoreCase = true) ?: false) ||
+                    (it.Description?.contains(query, ignoreCase = true) ?: false) ||
+                    (it.City?.contains(query, ignoreCase = true) ?: false)
+        } ?: emptyList()
+        _filteredData.value = filteredList
+    }
+
+
 
 //    fun searchDestination(query: String) {
 //        viewModelScope.launch {
