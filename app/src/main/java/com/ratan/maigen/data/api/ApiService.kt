@@ -8,6 +8,7 @@ import com.ratan.maigen.data.response.LogoutResponse
 import com.ratan.maigen.data.response.ProfileResponse
 import com.ratan.maigen.data.response.RegisterResponse
 import com.ratan.maigen.data.response.UpdateProfileResponse
+import retrofit2.Call
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -69,4 +70,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("placeName") placeName: String
     ): ExploreResponse
+
+    @GET("/category-recommendation")
+    fun getRecommendations(
+        @Header("Authorization") authorization: String,
+        @Query("category") category: String
+    ): Call<List<String>>
 }

@@ -3,16 +3,22 @@ package com.ratan.maigen.view.activity
 import TFLiteModelHelper
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.RadioButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.ratan.maigen.R
 import com.ratan.maigen.view.viewmodel.MainViewModel
 import com.ratan.maigen.view.viewmodel.ViewModelFactory
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import org.json.JSONObject
+import java.io.IOException
 
 class SurveyPreferenceActivity : AppCompatActivity() {
 
@@ -25,9 +31,7 @@ class SurveyPreferenceActivity : AppCompatActivity() {
     private lateinit var radioButtonRekreasi: RadioButton
     private lateinit var radioButtonReligius: RadioButton
     private lateinit var buttonSubmit: Button
-    private lateinit var textViewResult: TextView
 
-    private lateinit var modelHelper: TFLiteModelHelper
     private val viewModel: MainViewModel by viewModels { ViewModelFactory.getInstance(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,13 +47,11 @@ class SurveyPreferenceActivity : AppCompatActivity() {
         radioButtonRekreasi = findViewById(R.id.radioButtonRekreasi)
         radioButtonReligius = findViewById(R.id.radioButtonReligius)
         buttonSubmit = findViewById(R.id.buttonSubmit)
-        textViewResult = findViewById(R.id.textViewResult)
-
 
         buttonSubmit.setOnClickListener {
             val preferences = getPreferences()
             viewModel.saveSurveyPreference(true)
-            navigateToMainActivity(preferences)
+            fetchRecommendations(preferences)
         }
     }
 
@@ -66,18 +68,75 @@ class SurveyPreferenceActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToMainActivity(preferences: FloatArray) {
+    private fun fetchRecommendations(preferences: FloatArray) {
         val modelHelper = TFLiteModelHelper(this, onError = { error ->
             Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
         })
         val prediction = modelHelper.predict(preferences)
+        val selectedCategory = getSelectedCategory(preferences)
+
+        val url = "https://flask-bali-destination-ilmyfxcvzq-et.a.run.app/category-recommendation?category"
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("https://flask-bali-destination-ilmyfxcvzq-et.a.run.app/category-recommendation?category=$selectedCategory")
+            .get()
+            .addHeader("Authorization", "Bearer")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(this@SurveyPreferenceActivity, "Failed to fetch recommendations", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseData = response.body?.string()
+                    Log.d("API_REQUEST", "Response data: $responseData")
+                    if (responseData != null) {
+                        val recommendations = parseRecommendations(responseData)
+                        navigateToMainActivity(recommendations)
+                    }
+                } else {
+                    Log.e("API_REQUEST", "Request failed with code: ${response.code}")
+                }
+            }
+        })
+    }
+
+    private fun parseRecommendations(responseData: String): List<String> {
+        val jsonObject = JSONObject(responseData)
+        val jsonArray = jsonObject.getJSONArray("recommendations")
+        val recommendations = mutableListOf<String>()
+        for (i in 0 until jsonArray.length()) {
+            recommendations.add(jsonArray.getString(i))
+        }
+        return recommendations
+    }
+
+    private fun getSelectedCategory(preferences: FloatArray): String {
+        return when {
+            preferences[0] == 1.0f -> "Agrowisata"
+            preferences[1] == 1.0f -> "Alam"
+            preferences[2] == 1.0f -> "Belanja"
+            preferences[3] == 1.0f -> "Budaya"
+            preferences[4] == 1.0f -> "Cagar Alam"
+            preferences[5] == 1.0f -> "Pantai"
+            preferences[6] == 1.0f -> "Rekreasi"
+            preferences[7] == 1.0f -> "Religius"
+            else -> "Unknown"
+        }
+    }
+
+    private fun navigateToMainActivity(recommendations: List<String>) {
         val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("prediction", prediction)
+            putStringArrayListExtra("recommendations", ArrayList(recommendations))
         }
         startActivity(intent)
-        modelHelper.close()
         finish()
     }
+}
 
 
 //    val button: Button = findViewById(R.id.buttonSubmit)
@@ -98,4 +157,3 @@ class SurveyPreferenceActivity : AppCompatActivity() {
 //        }
 //    }
 
-}

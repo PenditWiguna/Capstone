@@ -4,11 +4,8 @@ import android.util.Log
 import com.google.android.gms.tflite.client.TfLiteInitializationOptions
 import com.google.android.gms.tflite.gpu.support.TfLiteGpu
 import com.google.android.gms.tflite.java.TfLite
-import com.ratan.maigen.ml.RecommenderModel
-import org.tensorflow.lite.DataType
 import org.tensorflow.lite.InterpreterApi
 import org.tensorflow.lite.gpu.GpuDelegateFactory
-import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.FileInputStream
 import java.io.IOException
 import java.nio.ByteBuffer
@@ -37,6 +34,22 @@ class TFLiteModelHelper(
             loadLocalModel()
         }.addOnFailureListener {
             onError("TFLite is not initialized yet.")
+        }
+    }
+
+    private fun initializeTFLite() {
+        TfLiteGpu.isGpuDelegateAvailable(context).onSuccessTask { gpuAvailable ->
+            val optionsBuilder = TfLiteInitializationOptions.builder()
+            if (gpuAvailable) {
+                optionsBuilder.setEnableGpuDelegateSupport(true)
+                isGPUSupported = true
+            }
+            TfLite.initialize(context, optionsBuilder.build())
+        }.addOnSuccessListener {
+            loadLocalModel()
+        }.addOnFailureListener {
+            onError("Failed to initialize TFLite.")
+            Log.e(TAG, "Failed to initialize TFLite.", it)
         }
     }
 

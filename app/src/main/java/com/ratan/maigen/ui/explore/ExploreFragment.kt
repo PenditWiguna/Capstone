@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ratan.maigen.data.response.ExploreResponse
+import com.ratan.maigen.data.response.ExploreResult
 import com.ratan.maigen.databinding.FragmentExploreBinding
 import com.ratan.maigen.view.adapter.ExploreAdapter
 import kotlinx.coroutines.launch
@@ -39,6 +41,34 @@ class ExploreFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
+        exploreAdapter = ExploreAdapter()
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = exploreAdapter
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val exploreResult = listOf(
+            ExploreResult(
+                Place_Id = "1",
+                Place_Name = "Tempat Wisata 1",
+                Description = "Deskripsi tempat wisata 1",
+                Weekend_Holiday_Price = "10000",
+                Weekday_Price = "8000",
+                Category = "Alam",
+                City = "Kota A",
+                Rating = "4.5",
+                Alamat = "Alamat 1",
+                Coordinate = "-8.3405, 115.092",
+                Lat = "-8.3405",
+                Long = "115.092",
+                Gambar = "url_gambar_1"
+            )
+        )
+
         exploreAdapter = ExploreAdapter()
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
