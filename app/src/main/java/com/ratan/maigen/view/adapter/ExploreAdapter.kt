@@ -47,6 +47,7 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ExploreViewHolder>() 
 
 
     class ExploreViewHolder(private val binding: ItemDestinationBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(exploreItem: ExploreResult) {
             binding.tvNamedestination.text = exploreItem.Place_Name
             binding.tvCreate.text = exploreItem.City
@@ -55,5 +56,7 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ExploreViewHolder>() 
                 .load(exploreItem.Gambar)
                 .into(binding.imgDestination)
         }
+
     }
+
 }

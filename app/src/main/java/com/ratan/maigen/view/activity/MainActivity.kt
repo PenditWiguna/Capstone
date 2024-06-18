@@ -14,8 +14,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.ratan.maigen.R
 import com.ratan.maigen.databinding.ActivityMainBinding
 import com.ratan.maigen.view.adapter.DestinationAdapter
@@ -36,13 +34,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        //get prediction
         val prediction = intent.getFloatArrayExtra("prediction")
 
-//        val recommendations = getRecommendationsFromPrediction(prediction)
-
-//        val recyclerView: RecyclerView = findViewById(R.id.rv_destination)
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView.adapter = DestinationAdapter(recommendations)
 
         val navView: BottomNavigationView = binding.navView
 
@@ -61,26 +56,28 @@ class MainActivity : AppCompatActivity() {
             if (!user.isLogin) {
                 navigateToWelcomeActivity()
             } else {
-                checkSurveyPreferenceAndNavigate(token)
+                checkSurveyPreferenceAndNavigate(token, prediction)
             }
         }
 
-//        val predictions = intent.getStringArrayListExtra("predictions")?: arrayListOf()
-//        destinationAdapter = DestinationAdapter(predictions)
-
     }
 
-    private fun checkSurveyPreferenceAndNavigate(token: String) {
+    private fun checkSurveyPreferenceAndNavigate(token: String, prediction: FloatArray?) {
         viewModel.getSurveyPreference().observe(this) { isSurveyCompleted ->
             if (isSurveyCompleted) {
-                getData(token)
+                if (prediction != null) {
+                    val predictionList = prediction.map { it.toString() }
+                    getData(token, predictionList)
+                }
             } else {
                 navigateToSurveyPreferenceActivity()
             }
         }
     }
 
-    private fun getData(token: String) {
+
+
+    private fun getData(token: String, prediction: List<String>) {
         val adapter = DestinationAdapter(this)
         binding.rvDestination.adapter = adapter.withLoadStateFooter(
             footer = LoadingStateAdapter {
