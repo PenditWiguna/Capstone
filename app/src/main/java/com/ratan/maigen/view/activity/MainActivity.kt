@@ -1,6 +1,7 @@
 package com.ratan.maigen.view.activity
 
 import TFLiteModelHelper
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -65,9 +66,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        val predictions = intent.getStringArrayListExtra("predictions")?: arrayListOf()
-//        destinationAdapter = DestinationAdapter(predictions)
 
+        val sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
+
+        if (!isLoggedIn) {
+            navigateToLoginActivity()
+            return
+        }
+    }
+
+    private fun clearSession() {
+        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
+
+    private fun navigateToLoginActivity() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 
     private fun checkSurveyPreferenceAndNavigate(token: String) {

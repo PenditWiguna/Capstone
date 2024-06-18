@@ -4,8 +4,10 @@ import TFLiteModelHelper
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
@@ -55,6 +57,15 @@ class SurveyPreferenceActivity : AppCompatActivity() {
             viewModel.saveSurveyPreference(true)
             fetchRecommendations(preferences)
         }
+
+        val imageButton: ImageButton = findViewById(R.id.next_button)
+        imageButton.setOnClickListener {
+            // Kode yang akan dijalankan ketika ImageButton diklik
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish() // Opsional: Menutup SurveyActivity setelah pindah ke halaman home
+        }
+
     }
 
     private fun getPreferences(): FloatArray {
@@ -77,16 +88,17 @@ class SurveyPreferenceActivity : AppCompatActivity() {
         val prediction = modelHelper.predict(preferences)
         val selectedCategory = getSelectedCategory(preferences)
 
-        val url = "https://flask-bali-destination-ilmyfxcvzq-et.a.run.app/category-recommendation?category"
         val client = OkHttpClient()
         val request = Request.Builder()
             .url("https://flask-bali-destination-ilmyfxcvzq-et.a.run.app/category-recommendation?category=$selectedCategory")
             .get()
-            .addHeader("Authorization", "Bearer YOUR_ACCESS_TOKEN")
+            .addHeader("Authorization", "Bearer")
             .build()
 
+        Log.d("API_REQUEST", "Request URL: ${request.url}")
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
+                Log.e("API_REQUEST", "Request failed: ${e.message}")
                 runOnUiThread {
                     Toast.makeText(this@SurveyPreferenceActivity, "Failed to fetch recommendations", Toast.LENGTH_SHORT).show()
                 }
@@ -98,10 +110,15 @@ class SurveyPreferenceActivity : AppCompatActivity() {
                     Log.d("API_REQUEST", "Response data: $responseData")
                     if (responseData != null) {
                         val recommendations = parseRecommendations(responseData)
-                        navigateToMainActivity(recommendations)
+                        runOnUiThread {
+                            navigateToMainActivity(recommendations)
+                        }
                     }
                 } else {
                     Log.e("API_REQUEST", "Request failed with code: ${response.code}")
+                    runOnUiThread {
+                        Toast.makeText(this@SurveyPreferenceActivity, "Failed with code: ${response.code}", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         })
@@ -138,6 +155,10 @@ class SurveyPreferenceActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+
+
+
 }
 
 

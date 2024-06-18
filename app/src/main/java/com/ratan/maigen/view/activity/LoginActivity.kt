@@ -61,12 +61,7 @@ class LoginActivity : AppCompatActivity() {
         playAnimation()
 
         binding.loginButton.setOnClickListener {
-            val name = binding.emailTextView.text.toString()
-
-            val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("name", name)
-            editor.apply()
+            login()
         }
     }
 
@@ -88,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
             setTitle("Login Berhasil!")
             setMessage("Lihat rekomendasi untuk Anda, yuk!")
             setPositiveButton("Yuk, lanjut!") { _, _ ->
-                val intent = Intent(context, SurveyPreferenceActivity::class.java)
+                val intent = Intent(this@LoginActivity, SurveyPreferenceActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()
@@ -104,7 +99,6 @@ class LoginActivity : AppCompatActivity() {
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }.start()
-
 
         val emailTextView =
             ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA, 1f).setDuration(100)
@@ -139,7 +133,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is ResultState.Success -> {
                         val token = result.data.toString()
-                        viewModel.saveSession(UserModel(email, password, token))
+                        saveSession(token)
                         showToast("Login berhasil")
                         showLoading(false)
                         setupAction()
@@ -151,6 +145,14 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun saveSession(token: String) {
+        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("auth_token", token)
+        editor.putBoolean("is_logged_in", true)
+        editor.apply()
     }
 
     private fun setMyButton() {
