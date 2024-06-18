@@ -40,6 +40,22 @@ class TFLiteModelHelper(
         }
     }
 
+    private fun initializeTFLite() {
+        TfLiteGpu.isGpuDelegateAvailable(context).onSuccessTask { gpuAvailable ->
+            val optionsBuilder = TfLiteInitializationOptions.builder()
+            if (gpuAvailable) {
+                optionsBuilder.setEnableGpuDelegateSupport(true)
+                isGPUSupported = true
+            }
+            TfLite.initialize(context, optionsBuilder.build())
+        }.addOnSuccessListener {
+            loadLocalModel()
+        }.addOnFailureListener {
+            onError("Failed to initialize TFLite.")
+            Log.e(TAG, "Failed to initialize TFLite.", it)
+        }
+    }
+
     private fun loadLocalModel() {
         try {
             val buffer: ByteBuffer = loadModelFile(context.assets, model)
@@ -97,6 +113,7 @@ class TFLiteModelHelper(
         private const val TAG = "recommender_model.tflite"
     }
 }
+
 
 //class TFliteModelHelper (private val context: Context){
 //
