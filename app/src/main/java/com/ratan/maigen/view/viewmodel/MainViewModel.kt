@@ -8,41 +8,40 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.ratan.maigen.data.model.UserModel
 import com.ratan.maigen.data.repository.DestinationRepository
+import com.ratan.maigen.data.repository.RecommendationRepository
 import com.ratan.maigen.data.response.ListDestinationItem
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: DestinationRepository) : ViewModel() {
+class MainViewModel(private val destinationRepository: DestinationRepository) : ViewModel() {
 
     fun register(username: String, email: String, password: String) =
-        repository.register(username, email, password)
+        destinationRepository.register(username, email, password)
 
-    fun login(email: String, password: String) = repository.login(email, password)
-
-    fun getDestination(token: String): LiveData<PagingData<ListDestinationItem>> = repository.getDestination(token).cachedIn(viewModelScope)
+    fun login(email: String, password: String) = destinationRepository.login(email, password)
 
     fun saveSession(user: UserModel) {
         viewModelScope.launch {
-            repository.saveSession(user)
+            destinationRepository.saveSession(user)
         }
     }
 
     fun getSession(): LiveData<UserModel> {
-        return repository.getSession().asLiveData()
+        return destinationRepository.getSession().asLiveData()
     }
 
     fun logout() {
         viewModelScope.launch {
-            repository.logout()
+            destinationRepository.logout()
         }
     }
 
     fun getSurveyPreference(): LiveData<Boolean> {
-        return repository.getSurveyPreference()
+        return destinationRepository.getSurveyPreference()
     }
 
     fun saveSurveyPreference(preference: Boolean) {
         viewModelScope.launch {
-            repository.saveSurveyPreference(preference)
+            destinationRepository.saveSurveyPreference(preference)
         }
     }
 }

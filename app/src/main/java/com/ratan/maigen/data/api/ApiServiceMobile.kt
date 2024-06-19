@@ -18,7 +18,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Query
 
-interface ApiService {
+interface ApiServiceMobile {
     @FormUrlEncoded
     @POST("/auth/signup")
     suspend fun register(
@@ -34,17 +34,11 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
+    @FormUrlEncoded
     @POST("/auth/logout")
     suspend fun logout(
         @Header("Authorization") token: String
     ): LogoutResponse
-
-    @GET("destination")
-    suspend fun getDestination(
-        @Header("Authorization") token: String,
-        @Query("page") page: Int,
-        @Query("size") size: Int
-    ): DestinationResponse
 
     @GET("/user/profile")
     suspend fun getProfile(
@@ -70,10 +64,4 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("placeName") placeName: String
     ): ExploreResponse
-
-    @GET("/category-recommendation")
-    fun getRecommendations(
-        @Header("Authorization") authorization: String,
-        @Query("category") category: String
-    ): Call<List<String>>
 }
