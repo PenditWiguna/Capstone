@@ -1,6 +1,6 @@
 # C241-PS023 || Bangkit Product Capstone || MaiGen :earth_asia:
 <div align="center">
-  <img src="https://github.com/PenditWiguna/Capstone/blob/main/Logo%20MaiGen%20JPG" width="500" height="500"/>
+  <img src="https://github.com/PenditWiguna/Capstone/blob/main/Logo%20MaiGen" width="500" height="500"/>
 </div>
 
 ### Themes : Digital Experiences: Revolutionizing Sustainable Tourism
