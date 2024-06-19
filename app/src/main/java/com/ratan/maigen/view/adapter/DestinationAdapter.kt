@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ratan.maigen.data.response.ListDestinationItem
 import com.ratan.maigen.databinding.ItemDestinationBinding
+import com.ratan.maigen.view.activity.MainActivity
 
-class DestinationAdapter : PagingDataAdapter<ListDestinationItem, DestinationAdapter.DestinationViewHolder>(DIFF_CALLBACK) {
+class DestinationAdapter(mainActivity: MainActivity) : PagingDataAdapter<ListDestinationItem, DestinationAdapter.DestinationViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewHolder {
         val binding = ItemDestinationBinding.inflate(LayoutInflater.from(parent.context), parent, false)

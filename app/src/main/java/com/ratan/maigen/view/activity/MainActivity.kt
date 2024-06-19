@@ -15,8 +15,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.ratan.maigen.R
 import com.ratan.maigen.databinding.ActivityMainBinding
 import com.ratan.maigen.view.adapter.DestinationAdapter
@@ -29,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var modelHelper: TFLiteModelHelper
     private lateinit var destinationAdapter: DestinationAdapter
 
-    private val mainViewModel: MainViewModel by viewModels { ViewModelFactory.getInstance(this) }
+    private val viewModel: MainViewModel by viewModels { ViewModelFactory.getInstance(this) }
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         showLoading(true)
-        mainViewModel.getSession().observe(this) { user ->
+        viewModel.getSession().observe(this) { user ->
             val token = user.token
             if (!user.isLogin) {
                 navigateToWelcomeActivity()
@@ -88,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkSurveyPreferenceAndNavigate(token: String) {
-        mainViewModel.getSurveyPreference().observe(this) { isSurveyCompleted ->
+        viewModel.getSurveyPreference().observe(this) { isSurveyCompleted ->
             if (isSurveyCompleted) {
                 getData(token)
             } else {

@@ -54,17 +54,6 @@ class DestinationRepository private constructor(private val apiServiceMobile: Ap
         }
     }
 
-//    fun getDestination(token: String): LiveData<PagingData<ListDestinationItem>> {
-//        return Pager(
-//            config = PagingConfig(
-//                pageSize = 5
-//            ),
-//            pagingSourceFactory = {
-//                DestinationPagingSource(apiServiceMobile,"Bearer $token")
-//            }
-//        ).liveData
-//    }
-
     fun getSession(): Flow<UserModel> {
         return preferences.getSession()
     }
