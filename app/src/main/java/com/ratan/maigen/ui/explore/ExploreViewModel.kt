@@ -22,10 +22,9 @@ class ExploreViewModel : ViewModel() {
 
     private val apiService = ApiConfig.getApiServiceMobile()
 
-
     private fun loadData() {
-        // Simulate loading data from an API or database
         viewModelScope.launch {
+            // Load data from API or database
             val data = listOf<ListExploreResult>() // Replace with actual data loading
             _exploreData.value = data
             _filteredData.value = data
@@ -41,28 +40,22 @@ class ExploreViewModel : ViewModel() {
         _filteredData.value = filteredList
     }
 
-
-
-//    fun searchDestination(query: String) {
-//        viewModelScope.launch {
-//            try {
-//                val response = withContext(Dispatchers.IO) {
-//                    apiService.explore("Bearer TOKEN", query) // Gantilah "Bearer TOKEN" dengan token yang sesuai
-//                }
-//                if (response != null) {
-//                    if (response.isSuccessful) {
-//                        _exploreData.value = response.body()?.results ?: emptyList()
-//                    } else {
-//                        _exploreData.value = emptyList()
-//                    }
-//                } else {
-//                    _exploreData.value = emptyList()
-//                }
-//            } catch (e: Exception) {
-//                // Tangani kesalahan saat mengakses respon
-//                _exploreData.value = emptyList()
-//                e.printStackTrace()
-//            }
-//        }
-//    }
+    // Uncomment and replace with actual API call if needed
+    // fun searchDestination(query: String) {
+    //     viewModelScope.launch {
+    //         try {
+    //             val response = withContext(Dispatchers.IO) {
+    //                 apiService.explore("Bearer TOKEN", query) // Replace with actual token
+    //             }
+    //             if (response.isSuccessful) {
+    //                 _exploreData.value = response.body()?.results ?: emptyList()
+    //             } else {
+    //                 _exploreData.value = emptyList()
+    //             }
+    //         } catch (e: Exception) {
+    //             _exploreData.value = emptyList()
+    //             e.printStackTrace()
+    //         }
+    //     }
+    // }
 }

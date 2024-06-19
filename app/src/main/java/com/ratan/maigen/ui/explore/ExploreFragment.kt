@@ -24,14 +24,14 @@ class ExploreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        exploreViewModel = ViewModelProvider(this).get(ExploreViewModel::class.java)
+        exploreViewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         setupRecyclerView()
         setupSearchView()
 
-        exploreViewModel.exploreData.observe(viewLifecycleOwner) { data ->
+        exploreViewModel.filteredData.observe(viewLifecycleOwner) { data ->
             exploreAdapter.submitList(data)
         }
 
@@ -51,7 +51,7 @@ class ExploreFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
                     lifecycleScope.launch {
-                      exploreViewModel.searchDestination(it)
+                        exploreViewModel.searchDestination(it)
                     }
                 }
                 return true
@@ -61,7 +61,6 @@ class ExploreFragment : Fragment() {
                 newText?.let {
                     exploreViewModel.searchDestination(it)
                 }
-                // Optional: Implement if you want to filter while typing
                 return true
             }
         })
