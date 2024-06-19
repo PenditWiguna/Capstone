@@ -17,6 +17,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "URL_MD", "\"https://bali-destination-ilmyfxcvzq-et.a.run.app\"")
+        buildConfigField("String", "URL_ML", "\"https://flask-bali-destination-ilmyfxcvzq-et.a.run.app\"")
     }
 
     buildTypes {

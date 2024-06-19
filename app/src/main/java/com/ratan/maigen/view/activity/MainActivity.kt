@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var modelHelper: TFLiteModelHelper
     private lateinit var destinationAdapter: DestinationAdapter
 
-    private val viewModel: MainViewModel by viewModels { ViewModelFactory.getInstance(this) }
+    private val mainViewModel: MainViewModel by viewModels { ViewModelFactory.getInstance(this) }
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         showLoading(true)
-        viewModel.getSession().observe(this) { user ->
+        mainViewModel.getSession().observe(this) { user ->
             val token = user.token
             if (!user.isLogin) {
                 navigateToWelcomeActivity()
@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
                 checkSurveyPreferenceAndNavigate(token)
             }
         }
-
 
         val sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
@@ -89,7 +88,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkSurveyPreferenceAndNavigate(token: String) {
-        viewModel.getSurveyPreference().observe(this) { isSurveyCompleted ->
+        mainViewModel.getSurveyPreference().observe(this) { isSurveyCompleted ->
             if (isSurveyCompleted) {
                 getData(token)
             } else {

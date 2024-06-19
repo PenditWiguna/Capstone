@@ -20,7 +20,7 @@ class ExploreViewModel : ViewModel() {
         loadData()
     }
 
-    private val apiService = ApiConfig.getApiService()
+    private val apiService = ApiConfig.getApiServiceMobile()
 
 
     private fun loadData() {
