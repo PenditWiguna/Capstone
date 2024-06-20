@@ -21,7 +21,7 @@ class ListDestinationAdapter(private val listDestination: ArrayList<Destination>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_destination, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_home, parent, false)
         return ListViewHolder(view)
     }
 
