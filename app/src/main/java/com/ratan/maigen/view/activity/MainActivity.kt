@@ -17,6 +17,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ratan.maigen.R
 import com.ratan.maigen.databinding.ActivityMainBinding
 import com.ratan.maigen.ui.home.HomeFragment
@@ -42,9 +44,9 @@ class MainActivity : AppCompatActivity() {
 
 //        val recommendations = getRecommendationsFromPrediction(prediction)
 
-//        val recyclerView: RecyclerView = findViewById(R.id.rv_destination)
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView.adapter = DestinationAdapter(recommendations)
+        val recyclerView: RecyclerView = findViewById(R.id.rv_destination)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
 
         val navView: BottomNavigationView = binding.navView
 
@@ -63,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             if (!user.isLogin) {
                 navigateToWelcomeActivity()
             } else {
-                checkSurveyPreferenceAndNavigate(token)
+                (token)
             }
         }
 
@@ -95,28 +97,28 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun checkSurveyPreferenceAndNavigate(token: String) {
-        viewModel.getSurveyPreference().observe(this) { isSurveyCompleted ->
-            if (isSurveyCompleted) {
-                getData(token)
-            } else {
-                navigateToSurveyPreferenceActivity()
-            }
-        }
-    }
+//    private fun checkSurveyPreferenceAndNavigate(token: String) {
+//        viewModel.getSurveyPreference().observe(this) { isSurveyCompleted ->
+//            if (isSurveyCompleted) {
+//                getData(token)
+//            } else {
+//                navigateToSurveyPreferenceActivity()
+//            }
+//        }
+//    }
 
-    private fun getData(token: String) {
-        val adapter = DestinationAdapter(this)
-        binding.rvDestination.adapter = adapter.withLoadStateFooter(
-            footer = LoadingStateAdapter {
-                adapter.retry()
-            }
-        )
-        viewModel.getDestination(token).observe(this) {
-            adapter.submitData(lifecycle, it)
-            showLoading(false)
-        }
-    }
+//    private fun getData(token: String) {
+//        val adapter = DestinationAdapter(this)
+//        binding.rvDestination.adapter = adapter.withLoadStateFooter(
+//            footer = LoadingStateAdapter {
+//                adapter.retry()
+//            }
+//        )
+//        viewModel.getDestination(token).observe(this) {
+//            adapter.submitData(lifecycle, it)
+//            showLoading(false)
+//        }
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater

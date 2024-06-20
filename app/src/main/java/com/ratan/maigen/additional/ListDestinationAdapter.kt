@@ -12,7 +12,8 @@ import com.ratan.maigen.R
 import com.ratan.maigen.view.activity.DetailActivity
 import java.lang.reflect.Member
 
-class ListDestinationAdapter(private val listDestination: ArrayList<Destination>) : RecyclerView.Adapter<ListDestinationAdapter.ListViewHolder>() {
+class ListDestinationAdapter(private val listDestination: ArrayList<Destination>) :
+    RecyclerView.Adapter<ListDestinationAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -44,7 +45,9 @@ class ListDestinationAdapter(private val listDestination: ArrayList<Destination>
         }
     }
 
-    override fun getItemCount(): Int = listDestination.size
+    override fun getItemCount(): Int {
+        return listDestination.size
+    }
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPhoto: ImageView = itemView.findViewById(R.id.img_destination)

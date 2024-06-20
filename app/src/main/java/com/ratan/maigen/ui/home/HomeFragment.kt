@@ -2,55 +2,43 @@ package com.ratan.maigen.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ratan.maigen.R
 import com.ratan.maigen.additional.Destination
 import com.ratan.maigen.additional.ListDestinationAdapter
 import com.ratan.maigen.databinding.FragmentHomeBinding
-import java.lang.reflect.Member
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     private var rvDestination: RecyclerView? = null
     private val list = ArrayList<Destination>()
-
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        return root
-
-        val view = inflater.inflate(R.layout.activity_main, container, false)
-
-        rvDestination = view.findViewById(R.id.rv_destination)
+        rvDestination = root.findViewById(R.id.rv_destination)
         rvDestination?.setHasFixedSize(true)
 
         list.addAll(getListDestinations())
         showRecyclerList()
 
-        return view
+        return root
     }
 
     private fun getListDestinations(): ArrayList<Destination> {
