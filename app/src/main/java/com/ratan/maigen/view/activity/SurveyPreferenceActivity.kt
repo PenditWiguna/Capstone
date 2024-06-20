@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.RadioButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +35,7 @@ class SurveyPreferenceActivity : AppCompatActivity() {
     private lateinit var buttonSubmit: Button
 
     private val viewModel: MainViewModel by viewModels { ViewModelFactory.getInstance(this) }
+    private lateinit var token: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +51,9 @@ class SurveyPreferenceActivity : AppCompatActivity() {
         radioButtonReligius = findViewById(R.id.radioButtonReligius)
         buttonSubmit = findViewById(R.id.buttonSubmit)
 
+        val sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
+        token = sharedPreferences.getString("auth_token", "") ?: ""
+
         buttonSubmit.setOnClickListener {
             val preferences = getPreferences()
             viewModel.saveSurveyPreference(true)
@@ -60,12 +62,10 @@ class SurveyPreferenceActivity : AppCompatActivity() {
 
         val imageButton: ImageButton = findViewById(R.id.next_button)
         imageButton.setOnClickListener {
-            // Kode yang akan dijalankan ketika ImageButton diklik
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish() // Opsional: Menutup SurveyActivity setelah pindah ke halaman home
+            finish()
         }
-
     }
 
     private fun getPreferences(): FloatArray {
@@ -92,7 +92,7 @@ class SurveyPreferenceActivity : AppCompatActivity() {
         val request = Request.Builder()
             .url("https://flask-bali-destination-ilmyfxcvzq-et.a.run.app/category-recommendation?category=$selectedCategory")
             .get()
-            .addHeader("Authorization", "Bearer")
+            .addHeader("Authorization", "Bearer $token")
             .build()
 
         Log.d("API_REQUEST", "Request URL: ${request.url}")
@@ -155,29 +155,4 @@ class SurveyPreferenceActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-
-
-
 }
-
-
-
-//    val button: Button = findViewById(R.id.buttonSubmit)
-//
-//        button.setOnClickListener{
-//            val input = FloatArray(65)
-//
-//            val modelHelper = TFLiteModelHelper(this, onError = { error ->
-//                Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-//            })
-//            val prediction = modelHelper.predict(input)
-//
-//            val intent = Intent(this, MainActivity::class.java)
-//            intent.putExtra("prediction",prediction)
-//            startActivity(intent)
-//
-//            modelHelper.close()
-//        }
-//    }
-
