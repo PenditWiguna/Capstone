@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity() {
 
 //        val recommendations = getRecommendationsFromPrediction(prediction)
 
-        val recyclerView: RecyclerView = findViewById(R.id.rv_destination)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+//        val recyclerView: RecyclerView = findViewById(R.id.rv_destination)
+//        recyclerView.layoutManager = LinearLayoutManager(this)
 
 
         val navView: BottomNavigationView = binding.navView
