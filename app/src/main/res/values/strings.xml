@@ -34,4 +34,30 @@
     <string name="religius">Religius</string>
     <string name="changeusername">Change Username?</string>
     <string name="changepassword">Change Password</string>
+    <string name="destination_name">Destinasi Wisata</string>
+    <string name="description">Deskripsi</string>
+
+    <string-array name="data_name">
+        <item>Air Terjun Aling-aling</item>
+        <item>Air Terjun Tukad Cepung</item>
+        <item>Danau Bearatan</item>
+        <item>Bukit Wanagiri</item>
+        <item>Gunung Batur</item>
+    </string-array>
+
+    <string-array name="data_description">
+        <item>Keberadaan air terjun ini semakin mempercantik wisata alam yang terdapat di pulau dewata Bali. Wisata ini dapat ditemui di Jl. Raya Desa Sambangan, Banjar, Sambangan, Kec. Sukasada, Kabupaten Buleleng, Bali</item>
+        <item>Salah satu air terjun yang berbeda dari air terjun lain di Bali adalah Tukad Cepung. Dikatakan berbeda karena air terjunnya tidak terbuka, melainkan berada di dalam goa. Di sekitar air terjun pun seolah belum pernah terjamah oleh manusia. Karena batuan dan tanaman yang ada begitu lebat dan orisinil. Wisata ini dapat ditemui di Jl. Tembuku, Tembuku, Kec. Tembuku, Kabupaten Bangli, Bali</item>
+        <item>Danau Beratan Bedugul merupakan sebuah danau yang berada di Bali yang dikelilingi oleh bukit dan memiliki udara sejuk. Danau Beratan berada di kawasan Bedugul yang terletak di dataran tinggi dan alamnya masih asri. Wisata ini dapat ditemui di Kec. Baturiti, Kabupaten Tabanan, Bali</item>
+        <item>Wanagiri Hidden Hills memiliki pesona keindahan yang luar biasa yang membuat siapapun yang melihatnya akan terkagum dan langsung jatuh cinta. Lukisan pemandangan alam yang cantik dengan background dataran tinggi pegunungan, pepohonan hijau nan asri serta di lengkapi oleh view danau yang terlihat jelas dari Puncak Wanagiri Hills. Wisata ini dapat ditemui di Jalan Munduk - Wanagiri, Wanagiri, Sukasada, Pancasari, Kec. Sukasada, Kabupaten Buleleng, Bali</item>
+        <item>Gunung Batur merupakan gunung yang memiliki kaldera yang sangat luas dan bisa dikatakan kaldera gunung purba. Selain itu gunung yang masih aktif ini pernah meletus ribuan tahun lalu hingga melahirkan Anak Gunung Batur serta Danau Batur. Wisata ini dapat ditemui di Kecamatan Kintamani, Kabupaten Bangli, Bali, Indonesia</item>
+    </string-array>
+
+    <string-array name="data_photo">
+        <item>https://storage.googleapis.com/maigen-bucket/image/4_Air%20Terjun%20Aling-Aling.jpg</item>
+        <item>https://storage.googleapis.com/maigen-bucket/image/6_Air%20Terjun%20Tukad%20Cepung.jpg</item>
+        <item>https://storage.googleapis.com/maigen-bucket/image/16_Danau%20Beratan.jpg</item>
+        <item>https://storage.googleapis.com/maigen-bucket/image/13_Bukit%20Wanagiri.jpg</item>
+        <item>https://storage.googleapis.com/maigen-bucket/image/25_Gunung%20Batur.jpg</item>
+    </string-array>
 </resources>
