@@ -4,6 +4,7 @@ import TFLiteModelHelper
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -11,12 +12,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ratan.maigen.R
 import com.ratan.maigen.databinding.ActivityMainBinding
+import com.ratan.maigen.ui.home.HomeFragment
 import com.ratan.maigen.view.adapter.DestinationAdapter
 import com.ratan.maigen.view.adapter.LoadingStateAdapter
 import com.ratan.maigen.view.viewmodel.MainViewModel
@@ -70,6 +73,13 @@ class MainActivity : AppCompatActivity() {
         if (!isLoggedIn) {
             navigateToLoginActivity()
             return
+        }
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                replace(R.id.nav_host_fragment_activity_main, HomeFragment())
+                addToBackStack(null)
+            }
         }
     }
 
